@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Blueprint Coaching Online: el sistema de Blueprint Lab en tu gimnasio y en tu teléfono. Programa por CODES, nutrición 403 DATA y check-in cada 2 semanas.">
+<meta property="og:title" content="Blueprint Coaching Online">
+<meta property="og:description" content="El sistema de Blueprint Lab en tu gimnasio y en tu teléfono.">
+<meta name="theme-color" content="#080c12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' fill='%23080c12'/%3E%3Cg fill='none' stroke='%232f8cf0' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M13 3.5a9.5 9.5 0 0 1 9.5 9.5'/%3E%3Cpath d='M13 7a6 6 0 0 1 6 6v3'/%3E%3Cpath d='M13 13v9'/%3E%3Cpath d='M9.5 8.2A6 6 0 0 0 7 13v4'/%3E%3C/g%3E%3C/svg%3E">
+<title>Blueprint Coaching Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#080c12;
+  --panel:#0e1520;
+  --panel-2:#111a27;
+  --rule:#1c2838;
+  --rule-2:#2a3a50;
+  --blue:#2f8cf0;
+  --blue-soft:#7fb6f5;
+  --paper:#e6edf6;
+  --text:#c9d4e2;
+  --muted:#7c8ba1;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--ink)}
+body{background:var(--ink);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(8,12,18,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none}
+.brand svg{flex:none}
+.brand b{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:15px;letter-spacing:.06em}
+.brand span{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;border-radius:2px;border:1px solid var(--blue);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--blue-soft)}
+.btn.ghost{background:transparent;color:var(--paper);border-color:var(--rule-2)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue-soft)}
+.bar .btn{padding:9px 14px;font-size:12px}
+
+/* hero: drafting sheet */
+.sheet{position:relative;border-bottom:1px solid var(--rule);overflow:hidden;
+  background-color:var(--ink);
+  background-image:
+    linear-gradient(var(--rule) 1px,transparent 1px),
+    linear-gradient(90deg,var(--rule) 1px,transparent 1px),
+    linear-gradient(rgba(28,40,56,.45) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(28,40,56,.45) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  background-position:-1px -1px}
+.sheet::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 40%,transparent 30%,var(--ink) 85%);pointer-events:none}
+.hero{position:relative;z-index:1;padding-block:clamp(56px,9vw,112px) clamp(48px,7vw,88px);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:end}
+.eyebrow{color:var(--blue);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--blue)}
+h1{font-family:var(--display);font-weight:900;font-stretch:125%;color:var(--paper);font-size:clamp(46px,8.6vw,104px);line-height:.9;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--blue-soft)}
+.lede{font-size:clamp(17px,1.8vw,20px);max-width:36ch;color:var(--text);margin:26px 0 32px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* title block (drawing sheet corner) */
+.titleblock{border:1px solid var(--rule-2);background:rgba(14,21,32,.92);font-family:var(--mono);font-size:12px}
+.titleblock div{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--rule)}
+.titleblock div:last-child{border-bottom:0}
+.titleblock dt,.titleblock dd{margin:0;padding:11px 14px}
+.titleblock dt{color:var(--muted);letter-spacing:.08em;text-transform:uppercase;border-right:1px solid var(--rule)}
+.titleblock dd{color:var(--paper)}
+.titleblock .dim{display:flex;align-items:center;gap:8px;color:var(--blue-soft)}
+.titleblock .dim i{flex:1;height:1px;background:var(--blue-soft);position:relative}
+.titleblock .dim i::before,.titleblock .dim i::after{content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--blue-soft)}
+.titleblock .dim i::before{left:0}.titleblock .dim i::after{right:0}
+
+/* sections */
+section.blk{padding-block:clamp(64px,9vw,112px);border-bottom:1px solid var(--rule)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px 48px;margin-bottom:48px;align-items:end}
+.head .mono{color:var(--blue)}
+h2{font-family:var(--display);font-weight:800;font-stretch:118%;color:var(--paper);font-size:clamp(30px,4.4vw,52px);line-height:.98;margin:10px 0 0;text-wrap:balance}
+.head p{margin:0;max-width:52ch;color:var(--text)}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--rule-2)}
+.steps li{padding:22px 20px 8px 0;position:relative}
+.steps li+li{padding-left:20px;border-left:1px solid var(--rule)}
+.steps .n{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:40px;color:var(--blue);line-height:1}
+.steps h3{font-family:var(--body);font-size:16px;font-weight:600;color:var(--paper);margin:14px 0 6px}
+.steps p{margin:0;font-size:14.5px;color:var(--muted)}
+.steps .t{display:block;margin-top:12px;color:var(--blue-soft)}
+
+/* system */
+.sys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.sys article{background:var(--panel);padding:28px 26px 30px;display:flex;flex-direction:column;gap:12px}
+.sys h3{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:22px;color:var(--paper);margin:0;letter-spacing:.01em}
+.sys p{margin:0;font-size:15px}
+.codes{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.codes span{font-family:var(--mono);font-size:11px;border:1px solid var(--rule-2);padding:6px 8px;color:var(--paper)}
+.codes span.on{border-color:var(--blue);color:#fff;background:rgba(47,140,240,.16)}
+.codes span.arr{border:0;color:var(--muted);padding-inline:2px}
+.hand{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:6px}
+.hand div{background:var(--panel-2);padding:10px 12px}
+.hand b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--blue-soft);text-transform:uppercase;font-weight:500}
+.hand small{font-size:13px;color:var(--text)}
+.cycle{display:flex;align-items:baseline;gap:10px;margin-top:6px}
+.cycle strong{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:56px;line-height:1;color:var(--paper)}
+.cycle span{color:var(--muted);font-size:14px}
+
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+.plan{border:1px solid var(--rule-2);background:var(--panel);padding:32px clamp(22px,3vw,36px) 34px;display:flex;flex-direction:column;position:relative}
+.plan.feat{border-color:var(--blue);background:linear-gradient(180deg,rgba(47,140,240,.10),rgba(47,140,240,0) 55%),var(--panel)}
+.plan .tag{position:absolute;top:-1px;right:-1px;background:var(--blue);color:#fff;padding:6px 10px}
+.plan .kind{color:var(--muted)}
+.plan h3{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:clamp(32px,4vw,44px);color:var(--paper);margin:6px 0 4px;line-height:1}
+.plan .for{margin:0 0 22px;color:var(--text);max-width:40ch}
+.price{display:flex;align-items:baseline;gap:8px;border-block:1px solid var(--rule);padding-block:18px;margin-bottom:22px;font-variant-numeric:tabular-nums}
+.price strong{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:52px;color:#fff;line-height:1}
+.price span{color:var(--muted)}
+.price em{font-style:normal;margin-left:auto;text-align:right;font-family:var(--mono);font-size:12px;color:var(--blue-soft);line-height:1.4}
+.plan ul{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:10px;font-size:15px}
+.plan li{display:grid;grid-template-columns:18px 1fr;gap:10px}
+.plan li::before{content:"";width:10px;height:10px;border:1.5px solid var(--blue);margin-top:7px}
+.plan li.plus::before{background:var(--blue)}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan .note{margin:14px 0 0;font-size:13px;color:var(--muted)}
+.fine{margin-top:22px;color:var(--muted);font-size:14px;max-width:70ch}
+
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.faq details{border-top:1px solid var(--rule);padding-block:18px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;color:var(--paper);font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--blue);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:10px 0 0;color:var(--text);font-size:15px;max-width:52ch}
+
+/* closer */
+.closer{padding-block:clamp(72px,10vw,128px)}
+.closer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:end}
+.closer h2{font-size:clamp(38px,6.4vw,80px);font-stretch:125%;font-weight:900;line-height:.92}
+.closer p{margin:0 0 22px;max-width:40ch}
+footer{border-top:1px solid var(--rule);padding-block:26px 34px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted)}
+
+@media (max-width:900px){
+  .hero,.head,.closer .wrap{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li,.steps li+li{padding:20px 16px 18px 0;border-left:0;border-bottom:1px solid var(--rule)}
+  .sys{grid-template-columns:1fr}
+  .plans,.faq{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .brand span{display:none}
+  .titleblock div{grid-template-columns:96px 1fr}
+  .price strong{font-size:44px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero > *:nth-child(2){animation-delay:.12s}
+  @keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+}
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Project Blueprint">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><g fill="none" stroke="#2f8cf0" stroke-width="1.6" stroke-linecap="round"><path d="M13 3.5a9.5 9.5 0 0 1 9.5 9.5"/><path d="M13 7a6 6 0 0 1 6 6v3"/><path d="M13 10.5a2.5 2.5 0 0 1 2.5 2.5v6"/><path d="M9.5 8.2A6 6 0 0 0 7 13v4"/><path d="M13 13v9"/><path d="M5.2 6.5A9.5 9.5 0 0 0 3.5 13v2"/><path d="M10.5 13.5v5.5"/></g></svg>
+      <b>PROJECT BLUEPRINT</b><span class="mono">// Coaching Online</span>
+    </a>
+    <a class="btn" href="#planes">Ver planes</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="sheet">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow mono">Blueprint Coaching Online · 1 a 1</div>
+        <h1>Build<br>the <em>human.</em></h1>
+        <p class="lede">El mismo sistema que usamos en Blueprint Lab, en tu gimnasio y en tu teléfono. Tu programa, tus macros y tu coach, ajustados a tu día real.</p>
+        <div class="cta-row">
+          <a class="btn" href="#planes">Escoge tu plan →</a>
+          <a class="btn ghost" href="#como">Cómo funciona</a>
+        </div>
+      </div>
+      <dl class="titleblock" aria-label="Resumen del servicio">
+        <div><dt>Proyecto</dt><dd>Tú</dd></div>
+        <div><dt>Programa</dt><dd>CODES y Fórmulas, con video de cada ejercicio</dd></div>
+        <div><dt>Revisión</dt><dd class="dim">cada 3 semanas <i></i></dd></div>
+        <div><dt>Check-in</dt><dd class="dim">cada 2 semanas <i></i></dd></div>
+        <div><dt>Nutrición</dt><dd>403 DATA · macros y porciones</dd></div>
+        <div><dt>Coach</dt><dd>En el chat de la app</dd></div>
+        <div><dt>Contrato</dt><dd>Ninguno. Cancelas cuando quieras.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="blk" id="como">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="mono">El proceso</span><h2>De la inscripción a tu primer CODE.</h2></div>
+        <p>No te damos una plantilla. Primero leemos quién eres, cómo entrenas y cómo comes, y después armamos el plan sobre eso.</p>
+      </div>
+      <ol class="steps">
+        <li><div class="n">1</div><h3>Te inscribes</h3><p>Escoges tu plan y pagas por el link. Se crea tu cuenta en la app.</p></li>
+        <li><div class="n">2</div><h3>Llenas tu cuestionario</h3><p>Metas, lesiones, horario, gimnasio y comida.</p><span class="t mono">≈ 10 min</span></li>
+        <li><div class="n">3</div><h3>Armamos tu plan</h3><p>Tu coach te monta el programa, tus macros y tu Blueprint Personal Data.</p><span class="t mono">≤ 48 h laborables</span></li>
+        <li><div class="n">4</div><h3>Sesión de bienvenida</h3><p>En Blueprint Lab, o por FaceTime si vives fuera de Puerto Rico.</p></li>
+        <li><div class="n">5</div><h3>Entrenas y ajustamos</h3><p>Sigues tus CODES, haces tu check-in y ajustamos el plan con tu data.</p><span class="t mono">cada 2 semanas</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="mono">El sistema</span><h2>Data &gt; trends.<br>Systems &gt; motivation.</h2></div>
+        <p>Tres piezas que trabajan juntas: cómo entrenas, cómo comes y cómo medimos si está funcionando.</p>
+      </div>
+      <div class="sys">
+        <article>
+          <span class="mono" style="color:var(--blue)">Entrenamiento</span>
+          <h3>CODES y Fórmulas</h3>
+          <p>Tu programa viene en CODES. Cada día que entrenas haces el siguiente, en orden, y al terminar el último vuelves al primero. Si un día no entrenas, no pierdes nada: sigues con el que te tocaba.</p>
+          <div class="codes" aria-label="Ejemplo de rotación de CODES">
+            <span class="on">CODE 1</span><span class="arr">→</span><span>2</span><span class="arr">→</span><span>3</span><span class="arr">→</span><span>4</span><span class="arr">→</span><span>5</span><span class="arr">↺</span>
+          </div>
+        </article>
+        <article>
+          <span class="mono" style="color:var(--blue)">Nutrición</span>
+          <h3>403 DATA</h3>
+          <p>Tus macros en la app y tu Blueprint Personal Data: porciones por comida medidas con tu mano, sin balanza, y tu lista de compras.</p>
+          <div class="hand" aria-label="Porciones con la mano">
+            <div><b>Palma</b><small>proteína</small></div>
+            <div><b>Puño</b><small>vegetales</small></div>
+            <div><b>Mano ahuecada</b><small>carbos</small></div>
+            <div><b>Pulgar</b><small>grasa</small></div>
+          </div>
+        </article>
+        <article>
+          <span class="mono" style="color:var(--blue)">Seguimiento</span>
+          <h3>Check-in</h3>
+          <p>Desde la app nos mandas tu peso, cómo te queda la ropa, tu energía, tu sueño y tu fuerza. Miramos la tendencia, no un día suelto, y ajustamos.</p>
+          <div class="cycle"><strong>2</strong><span>semanas entre cada check-in.<br>Tu programa se renueva cada 3.</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="planes">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="mono">Planes</span><h2>Escoge cómo quieres trabajar con nosotros.</h2></div>
+        <p>Los dos traen el sistema completo. La diferencia es si vienes al Lab todos los meses.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <span class="mono kind">Entrenas en tu gimnasio</span>
+          <h3>Outpost</h3>
+          <p class="for">Para ti que entrenas en tu propio gimnasio, en Puerto Rico o fuera, y quieres seguir el mismo sistema de Blueprint Lab.</p>
+          <div class="price"><strong>$150</strong><span>/ mes</span><em>$167.25 con IVU<br>(11.5%)</em></div>
+          <ul>
+            <li>Programa Blueprint renovado cada 3 semanas</li>
+            <li>Entrenamientos por CODES y Fórmulas, con videos</li>
+            <li>Macros y guías de nutrición</li>
+            <li>Check-in cada 2 semanas con ajustes a tu plan</li>
+            <li>Chat con tu coach en la app</li>
+            <li>Seguimiento de progreso</li>
+            <li class="plus">Sesión de bienvenida en tu primer mes (Lab o FaceTime)</li>
+            <li class="plus">Sesiones con trainers de Blueprint a $30</li>
+          </ul>
+          <a class="btn ghost" href="https://kahunas.io/coach/packages/list/77ea161d-5c23-4907-b35b-3ea71128833b" target="_blank" rel="noopener">Inscribirme en Outpost</a>
+        </article>
+        <article class="plan feat">
+          <span class="tag mono">Destacado</span>
+          <span class="mono kind">Sistema completo + Lab</span>
+          <h3>Hybrid</h3>
+          <p class="for">El sistema completo de Blueprint, y además vienes al Lab una vez al mes, todos los meses.</p>
+          <div class="price"><strong>$225</strong><span>/ mes</span><em>$250.88 con IVU<br>(11.5%)</em></div>
+          <ul>
+            <li class="plus">Una visita al Blueprint Lab todos los meses</li>
+            <li class="plus">Entrenas un workout de Blueprint con un entrenador corrigiéndote</li>
+            <li class="plus">Evaluación de progreso y actualización del programa en esa visita</li>
+            <li>Programa Blueprint renovado cada 3 semanas</li>
+            <li>CODES y Fórmulas, con videos</li>
+            <li>Macros y guías de nutrición</li>
+            <li>Check-in cada 2 semanas y chat con tu coach</li>
+            <li class="plus">Acceso al calendario del Lab para sesiones extra a $30</li>
+          </ul>
+          <a class="btn" href="https://kahunas.io/coach/packages/list/77ea161d-5c23-4907-b35b-3ea71128833b" target="_blank" rel="noopener">Inscribirme en Hybrid</a>
+          <p class="note">Solo para quienes viven en Puerto Rico. Si vives fuera, escoge Outpost.</p>
+        </article>
+      </div>
+      <p class="fine">El IVU es el impuesto de Puerto Rico (11.5%). Sin contratos: cancelas cuando quieras.</p>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="mono">Preguntas</span><h2>Antes de inscribirte.</h2></div>
+        <p>Si tu pregunta no está aquí, escríbenos y te contestamos.</p>
+      </div>
+      <div class="faq">
+        <details><summary>¿Qué necesito para empezar?</summary><p>Un gimnasio donde entrenar y tu teléfono. Todo lo demás, el programa, los videos, los macros y el chat, está en la app.</p></details>
+        <details><summary>¿Y si mi gimnasio no tiene todo el equipo?</summary><p>Nos dices qué tiene tu gimnasio y ajustamos los ejercicios. Una barra se puede cambiar por mancuernas, cable o máquina, siempre con el mismo movimiento.</p></details>
+        <details><summary>¿Cuántos días tengo que entrenar?</summary><p>Los que de verdad puedes. Los CODES van en orden, uno por cada día que entrenas, así que se acomodan a tu semana.</p></details>
+        <details><summary>¿Tengo que pesar la comida?</summary><p>No. Tus porciones se miden con la mano: palma, puño, mano ahuecada y pulgar. Los macros de la app son el total del día.</p></details>
+        <details><summary>Vivo fuera de Puerto Rico, ¿puedo entrar?</summary><p>Sí, con Outpost. Tu sesión de bienvenida es por FaceTime y el resto es igual.</p></details>
+        <details><summary>¿Hay contrato?</summary><p>No. Pagas mes a mes y cancelas cuando quieras.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closer">
+    <div class="wrap">
+      <h2>You are<br>the system.</h2>
+      <div>
+        <p>Aquí no hay atajos ni excusas. Hay un sistema real, probado y que da resultados. Discipline equals freedom.</p>
+        <a class="btn" href="#planes">Escoger mi plan →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">Data &gt; Trends // Systems &gt; Motivation // Consistency &gt; Perfection</span>
+    <span class="mono">Project Blueprint · Santurce, PR</span>
+  </div>
+</footer>
+
+</body>
+</html>
